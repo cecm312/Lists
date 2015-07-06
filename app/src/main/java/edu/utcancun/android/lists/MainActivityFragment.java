@@ -26,22 +26,18 @@ public class MainActivityFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView=inflater.inflate(R.layout.fragment_main, container, false);
 
-        String [] values={
-                "Lunes - Soleado 30/25",
-                "Martes - Soleado 30/25",
-                "Miercoles - Soleado 30/25",
-                "Jueves - Soleado 30/25",
-                "Viernes - Soleado 30/25",
-                "Sabado - Soleado 30/25",
-                "Domingo - Soleado 30/25",
-        };
-        List<String> list=new ArrayList<String>(Arrays.asList(values));
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(
-                getActivity(),
-                R.layout.list_item_forecast,
-                R.id.list_item_forecast_textView,
-                list
-        );
+        ArrayList<Pronostic> pronostics=new ArrayList<Pronostic>();
+        pronostics.add(new Pronostic("Lunes","Soleado","30º/25",R.drawable.soleado));
+        pronostics.add(new Pronostic("Martes","Nevando","30º/25",R.drawable.nevando));
+        pronostics.add(new Pronostic("Miercoles","Nublado","30º/25",R.drawable.nublado));
+        pronostics.add(new Pronostic("Jueves","Soleado","30º/25",R.drawable.soleado));
+        pronostics.add(new Pronostic("Viernes","Nevando","30º/25",R.drawable.nevando));
+        pronostics.add(new Pronostic("Sabado","Nublado","30º/25",R.drawable.nublado));
+        pronostics.add(new Pronostic("Domingo","Soleado","30º/25",R.drawable.soleado));
+
+        PronosticAdapter adapter=new PronosticAdapter(getActivity(),pronostics);
+
+
         ListView listView= (ListView) rootView.findViewById(R.id.list_item_forecast);
         listView.setAdapter(adapter);
         return rootView;
