@@ -16,6 +16,11 @@ public class Pronostic {
         this.icon=icon;
     }
 
+    @Override
+    public String toString() {
+        return this.getDay()+" "+this.getStatus()+" "+this.getTemperatures();
+    }
+
     public String getDay() {
         return day;
     }
