@@ -1,5 +1,6 @@
 package edu.utcancun.android.lists;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -35,7 +36,7 @@ public class MainActivityFragment extends Fragment {
         pronostics.add(new Pronostic("Jueves","Soleado","30º/25",R.drawable.soleado));
         pronostics.add(new Pronostic("Viernes","Nevando","30º/25",R.drawable.nevando));
         pronostics.add(new Pronostic("Sabado","Nublado","30º/25",R.drawable.nublado));
-        pronostics.add(new Pronostic("Domingo","Soleado","30º/25",R.drawable.soleado));
+        pronostics.add(new Pronostic("Domingo", "Soleado", "30º/25", R.drawable.soleado));
 
         PronosticAdapter adapter=new PronosticAdapter(getActivity(),pronostics);
         ListView listView= (ListView) rootView.findViewById(R.id.list_item_forecast);
@@ -44,7 +45,9 @@ public class MainActivityFragment extends Fragment {
         AdapterView.OnItemClickListener itemClickListener=new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(getActivity(),pronostics.get(position).toString(), Toast.LENGTH_LONG).show();
+                Intent intate=new Intent(getActivity(),MainActivity2.class);
+                intate.putExtra("pronostic",pronostics.get(position));
+                startActivity(intate);
             }
         };
         listView.setOnItemClickListener(itemClickListener);

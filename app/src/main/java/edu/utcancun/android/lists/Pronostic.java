@@ -1,9 +1,11 @@
 package edu.utcancun.android.lists;
 
+import java.io.Serializable;
+
 /**
  * Created by carloschan on 05/07/15.
  */
-public class Pronostic {
+public class Pronostic implements Serializable{
     private String day;
     private String status;
     private String temperatures;
